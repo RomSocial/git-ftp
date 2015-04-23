@@ -1,0 +1,6 @@
+[staging]
+username=user
+password=pass
+hostname=host
+remotepath=/dir
+ssl=no

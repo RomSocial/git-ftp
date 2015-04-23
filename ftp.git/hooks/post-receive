@@ -1,0 +1,26 @@
+#!/bin/sh
+# To copy the files to local directory
+# GIT_WORK_TREE=/opt/test/ git checkout -f
+
+# To copy specific branch / commit / etc. - different params
+
+
+while read OLD_COMMIT NEW_COMMIT REFNAME; do
+    BRANCH=${REFNAME#refs/heads/}
+	
+	echo "\nReceived Push Request at $( date +"%F %T" )" >> post-receive.log
+	echo $SSH_CONNECTION >> post-receive.log
+	id >> post-receive.log
+	echo "Old SHA: $OLD_COMMIT \nNew SHA: $NEW_COMMIT \nBranch Name: $BRANCH" >> post-receive.log
+
+	if  [ $BRANCH = "staging" ]; then
+	    echo "Uploading $BRANCH branch to FTP" >> post-receive.log
+		python git-ftp.py -b $BRANCH -c $NEW_COMMIT
+	fi
+
+	# if grep -q "^\[$BRANCH\]$" ftpdata; then
+	# 	echo "Uploading $BRANCH branch to FTP" >> post-receive.log
+	# 	python git-ftp.py -b $BRANCH -c $NEW_COMMIT
+ 	# fi
+done
+true
