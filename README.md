@@ -1,6 +1,10 @@
 # git-ftp
 ## Setup for Ubuntu Git Ftp. 
 
+The source, the python file came from https://github.com/ezyang/git-ftp
+But the instructions provided did not work for me.
+This is an attempt to make a config that would work for me.
+
 create bare git repo
 install python
 
