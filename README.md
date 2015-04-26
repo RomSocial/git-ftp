@@ -29,6 +29,10 @@ But the instructions provided did not work for me. This is an attempt to make a 
 
 install python
 
+Requires: git-python 0.3.x
+it can be installed with easy_install gitpython
+(you might require higher permissions for this step, e.g. DreamHost does not have this plugin installed on shared accounts)
+
 create bare git repo
 
 move post-receive to hooks subfolder of the bare git repo 
